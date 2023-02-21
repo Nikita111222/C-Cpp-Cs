@@ -1,32 +1,38 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
-#include<locale.h>
+#define _USE_MATH_DEFINES
+#include <stdio.h>
+#include <math.h>
+
 int main(void)
 {
-	setlocale (LC_ALL, "Rus");
-	char name1[9], name2[9], name3[9];
-	char kolvo1, kolvo2, kolvo3;
-	long long zapas1, zapas2, zapas3;
-	float chast1, chast2, chast3;
-	printf("1. Введите: Фирма, кол-во, год. запас, часть рынка >");
-	scanf("%s %c %lld %f", name1, &kolvo1, &zapas1, &chast1);
-	printf("2. Введите: Фирма, кол-во, год. запас, часть рынка >");
-	scanf("%s %c %lld %f", name2, &kolvo2, &zapas2, &chast2);
-	printf("3. Введите: Фирма, кол-во, год. запас, часть рынка >");
-	scanf("%s %c %lld %f", name3, &kolvo3, &zapas3, &chast3);
-	/* Вывод таблицы */
-	/* Вывод заголовков */
-	printf("--------------------------------------------------------------------------------------\n");
-	printf("| Фирмы - производителя СКБД                                                         |\n");
-	printf("|------------------------------------------------------------------------------------|\n");
-	printf("| Фирма    | Количество продуктов  | Годовой объем продажи ($)   | Часть рынка (%)   |\n");
-	printf("|----------|-----------------------|------------------------------|------------------|\n");
-	/* Вывод рядов фактических данных */
-	printf("| %9s| %c                     | %11lld                  | %5.1f            |\n", name1, kolvo1, zapas1, chast1);
-	printf("| %9s| %c                     | %11lld                  | %5.1f            |\n", name2, kolvo2, zapas2, chast2);
-	printf("| %9s| %c                     | %11lld                  | %5.1f            |\n", name3, kolvo3, zapas3, chast3);
-	printf("--------------------------------------------------------------------------------------\n");
-	printf("| Примечание: по данным Gartner Group za 1999g                                       |\n");
-	printf("--------------------------------------------------------------------------------------\n");
-	return 0;
+	char K;
+	double x, y, z, a1, a2, a3;
+	double u;
+	scanf("%c", &K, 1);
+
+
+	switch(K)
+	{
+	case '1':case '2':
+		scanf("%lf %lf %lf", &x, &y, &z);
+		a1 = pow(8 + pow(fabs(x - y), 2) + 1, 1./3.);
+		a2 = (pow(x, 2) + pow(y, 2) + 2);
+		a3 = exp(fabs(x - y)) * pow((pow(tan(z), 2) + 1), x);
+		if (a2 == 0) {
+			printf("ERROR - UNREAL\n");
+		}
+		u = (a1/a2) - a3;
+		printf("u = %lf", u);
+		break;
+	case '3':
+		x = -4.5; y = 0.000075; z = 84.5;
+		u = pow(8 + pow(fabs(x - y), 2) + 1, 1./3.)/(pow(x, 2) + pow(y, 2) + 2) - exp(fabs(x - y))*pow((pow(tan(z), 2) + 1), x);
+		printf("u = %lf", u);
+		break;
+	case '4':case'5':case'6':
+		return 0;
+	default:
+		printf("ERROR - 404");
+		return -44444;
+	}
 }
