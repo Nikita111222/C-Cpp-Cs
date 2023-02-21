@@ -1,56 +1,53 @@
-#include <stdio.h>
+#define CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <stdio.h>
+#define p1 printf("input size of the array(5-20)")
+#define scnf1 scanf_s("%d", &size)
+#define пока1 while (size < 5 || size>20)
+#define p2 printf("Error. Input size of array again")
+#define scnf2 scanf_s("%d", &size)
+#define для1 for (int i = 0; i < size; i++)
+#define p3 printf("input element of array(-100 - 100)")
+#define scnf3 scanf_s("%d", &a)
+#define пока2 while (a < -100 || a>100)
+#define p4 printf("Error. Input element of array again")
+#define scnf4 scanf_s("%d", &a)
+#define для2 for (i; i < size; ++i)
+#define если1 if (min > array[i] && array[i] > 0)
+#define для3 for (i = 0; i < size; ++i)
+#define если2 if (array[i] < 0)
+#define p5 printf("amount of pairs -> %d\n", array[i])
+#define мин1 min = array[i];
+#define а array[i] = min;
+
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	char str[10];
-	int binary = 1;
-	int octal = 1;
-	int decimal = 1;
-	int hexadecimal = 1;
-	int word = 1;
-	int d;
-	printf("\nВведите строку (<10символов )=");
-	gets_s(str, 10);
-	printf("%s", str);
-	d = strlen(str);
-	for (int i = 0; i < d; i++)
-	{
-		if (str[i] < '0' || str[i]>'1')
-			binary = 0;
+	const int size = 10;
+	int a;
+	int i = 0;
+	int min = 0;
+	p1;
+		scnf1;
+	пока1{
+		p2;
+		scnf2;
 	}
-	if (binary == 1)
-		printf("\nМожет быть двоичным");
-
-	for (int i = 0; i < d; i++)
-	{
-		if (str[i] < '0' || str[i]>'7')
-			octal = 0;
+	int array[20];
+	для1{
+		p3;
+		scnf3;
+	пока2{
+		p4;
+		scnf4;
 	}
-	if (octal == 1)
-		printf("\nМожет быть восьмиричным ");
-	
-
-	for (int i = 0; i < d; i++)
-	{
-		if (str[i] < '0' || str[i]>'9')
-			decimal = 0;
-	}
-	if (decimal == 1)
-		printf("\nМожет быть десятичным");
-	for (int i = 0; i < d; i++)
-	{
-		if ((str[i] < '0') || (str[i] > '9' && str[i] < 'A') || (str[i] > 'F' && str[i] < 'a') || (str[i] > 'f'))
-			hexadecimal = 0;
-	}
-	if (hexadecimal == 1)
-		printf("\nМожет быть шестнадцатеричным");
-	for (int i = 0; i < d; i++)
-	{
-		if ((str[i] < 'A') || (str[i] > 'Z' && str[i] < 'a') || (str[i] > 'z'))
-			word = 0;
-	}
-	if (word == 1)
-		printf("\nМожет быть слово");
-	return 0;
+		для2
+		если1
+		мин1
+		для3
+		{
+			если2;
+			а;
+		}
+	}	
+p5;
 }
