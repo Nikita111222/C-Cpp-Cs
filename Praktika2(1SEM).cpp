@@ -1,28 +1,16 @@
-#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+
 int main(void)
+
 {
-	char name1[9], name2[9], name3[9];
-	char kolvo1, kolvo2, kolvo3;
-	long zapas1, zapas2, zapas3;
-	float chast1, chast2, chast3;
-	printf("1. Vvedite: Firma, kol-vo, god. zapas, chast' rynka >");
-	scanf("%s %c %d %f", name1, &kolvo1, &zapas1, &chast1);
-	printf("2. Vvedite: Firma, kol-vo, god. zapas, chast' rynka >");
-	scanf("%s %c %d %f", name2, &kolvo2, &zapas2, &chast2);
-	printf("3. Vvedite: Firma, kol-vo, god. zapas, chast' rynka >");
-	scanf("%s %c %d %f", name3, &kolvo3, &zapas3, &chast3);
-	/* Вывод таблицы */
-	/* Вывод заголовков */
-	printf("--------------------------------------------------------------------------------------\n");
-	printf("| Firmy - proizvoditelya SKBD                                                        |\n");
-	printf("|------------------------------------------------------------------------------------|\n");
-	printf("| Firma    | Kolichestvo produktov | Gododvoy objyom prodazhi ($) | Chast' rynka (%) |\n");
-	printf("|----------|-----------------------|------------------------------|------------------|\n");
-	/* Вывод рядов фактических данных */
-	printf("| %9s| %c                     | %-3d                          | %5.1f           |\n", name1, kolvo1, zapas1, chast1);
-	printf("| %9s| %c                     | %-3d                          | %5.1f           |\n", name2, kolvo2, zapas2, chast2);
-	printf("| %9s| %c                     | %-3d                          | %5.1f           |\n", name3, kolvo3, zapas3, chast3);
-	printf("| Primechanie: po dannym Gartner Group za 1999g                                      |\n");
-	printf("--------------------------------------------------------------------------------------\n");
-	return 0;
+    setlocale(LC_ALL, "Rus");
+    double x, y, z;
+    printf("Введите x, y, z: >");
+    scanf("%lf %lf %lf", &x, &y, &z);
+    float u = pow(8 + pow(fabs(x-y), 2) + 1, 1./3.)/(pow(x, 2) + pow(y, 2) + 2) - expf(fabs(x-y)) * pow((pow(tan(z), 2) + 1), x);
+    printf("u = %lf", u);
+
 }
